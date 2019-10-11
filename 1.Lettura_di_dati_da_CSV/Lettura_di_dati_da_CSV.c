@@ -13,7 +13,7 @@ che dalla riga letta ritorni la struttura valorizzata.
 
 #define L_CAMPO 50          //definizione della dimensione massima di ogni stringa della mia tabella
 #define L_RIGA 300          //definizione della dimensione massima di ogni riga del mio file
-#define NUMERO_RIGHE 16598  //numero righe vhe voglio leggere del mio file CSV
+#define NUMERO_RIGHE 20000  //numero righe vhe voglio leggere del mio file CSV
 #define N_ELEM 11           //numero delle colonne della tabella
 
 typedef struct Tabella{ //dichiarazione della struttura
