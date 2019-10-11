@@ -16,6 +16,8 @@ che dalla riga letta ritorni la struttura valorizzata.
 #define NUMERO_RIGHE 20000  //numero righe vhe voglio leggere del mio file CSV
 #define N_ELEM 11           //numero delle colonne della tabella
 
+#define SEPARATORE ","      //separatore dei vari campi sul file
+
 typedef struct Tabella{ //dichiarazione della struttura
  int Rank;
  int Year;
@@ -53,51 +55,51 @@ void ScannerizzaTabella(Tabella dati[], int *elementi, char descrizione[][L_CAMP
     char* campo;  //dichiaro il puntatore campo di tipo char
     while(i<NUMERO_RIGHE&&fgets(riga,L_RIGA,fp)!=NULL){  //ripeto questo ciclo finchè riuscirò a leggere dal file o finchè non raggiungo la dimensione massima della tabella
         if(i!=-1){ //se i>=0 allora devo occupare le celle della tabella altrimenti memorizzo l'intestazione
-            campo=strtok(riga,",");     //prelevo i campi della tabella dalla riga e li salvo
+            campo=strtok(riga,SEPARATORE);     //prelevo i campi della tabella dalla riga e li salvo
             dati[i].Rank=atoi(campo);   //strtok mi permette di dividere una stringa alla prima occorenza del secondo parametro
-            campo=strtok(NULL,",");     //successivamente se al posto della stringa scrivo NULL continuerà dal punto a cui ero rimasto precedentemente
+            campo=strtok(NULL,SEPARATORE);     //successivamente se al posto della stringa scrivo NULL continuerà dal punto a cui ero rimasto precedentemente
             strcpy(dati[i].Name,campo); //strtok mi restituisce un puntatore alla stringa
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(dati[i].Platform,campo); //strcpy mi permette di copiare il contenuto della seconda stringa nella prima
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].Year=atoi(campo);   //utilizzo atoi per trasformare una stringa in un numero intero
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(dati[i].Genre,campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(dati[i].Publisher,campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].NA_Sales=atof(campo); //utilizzo atof per trasformare una stringa in un numero decimale
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].EU_Sales=atof(campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].JP_Sales=atof(campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].Other_Sales=atof(campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             dati[i].Global_Sales=atof(campo);
             *elementi=*elementi+1;      //incremento il conteggio degli elementi
         }else{              //nel caso leggo la prima riga mi salvo le decrizioni nel vettore descrizione
-            campo=strtok(riga,","); 
+            campo=strtok(riga,SEPARATORE); 
             strcpy(descrizione[0],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[1],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[2],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[3],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[4],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[5],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[6],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[7],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[8],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[9],campo);
-            campo=strtok(NULL,",");
+            campo=strtok(NULL,SEPARATORE);
             strcpy(descrizione[10],campo);
         }
         i++;    //incremento la i per memorizzare nella riga successiva della mia tabella
