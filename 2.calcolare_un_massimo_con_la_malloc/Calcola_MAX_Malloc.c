@@ -1,9 +1,7 @@
 /*
 Autore: Gabriele bagnis
 Data: 26/09/2019
-Es Csv: Creare un programma in linguaggio C che legga il file vgsales.csv e lo importi in un array di strutture.
-Ogni riga contiene i campi separati da virgole, per cui puo' essere comodo creare una funzione split
-che dalla riga letta ritorni la struttura valorizzata.
+Es Malloc: Creare un programma che calcoli un massimo tra n numeri utilizzando la malloc
 */
 
 #include<stdio.h>
@@ -27,7 +25,7 @@ int main(){
     }
     max=punt[0];    //inizializzo il massimo al primo elemento del vettore
     for(i=1;i<n;i++){   //ripete il ciclo finchè non sono arrivato al numero massimo di elementi
-        if(punt[i]>punt[i-1]){  //controllo se l'elemento del vettore è maggiore di quello precedente
+        if(punt[i]>max){  //controllo se l'elemento del vettore è maggiore di quello precedente
             max=punt[i];    //cambio il massimo
         }
     }
