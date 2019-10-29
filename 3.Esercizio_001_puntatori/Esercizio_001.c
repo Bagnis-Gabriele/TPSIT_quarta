@@ -26,6 +26,8 @@ int main(){
         printf("\nil numero %d e': %f", i, *(punt+i)); //stampo i numeri per verificarne il funzionamento
     }
 
+    free(punt); //libero lo spazio occupato dal puntatore punt
+
     fflush(stdin);    //aspetto un input da tastiera per proseguire
     getch();
 }

@@ -8,7 +8,7 @@ Es 2 puntatori: Write a program in C to find the largest element using Dynamic M
 #include<stdlib.h>
 
 int main(){
-    float *punt;  //dichiaro il puntatore di tipo intero
+    float *punt;  //dichiaro il puntatore di tipo decimale
     float num;    //variabile per memorizzare il numero inserito
     int n;      //numeri da inserire
     int i=0;    //contatore
@@ -34,6 +34,8 @@ int main(){
         }
     }
     printf("\nil numero piu' grande e': %f", max);    //stampo il valore massimo
+
+    free(punt); //libero lo spazio occupato dal vettore punt
 
     fflush(stdin);  //aspetto un input da tastiera per proseguire
     getch();
