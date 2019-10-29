@@ -37,6 +37,9 @@ int main(){
         printf("\n empid= %d \t empname= %s", (*(*(vett+i))).empid, (*(*(vett+i))).empname);    //stampo l'id e il nome dell'impiegato
     }
 
-    fflush(stdin);  //aspetto un input da tastiera per proseguire
+    free(vett); //libero lo spazio utilizzato dal vettore di strutture
+
+    printf("\ncliccare un tasto per proseguire"); //aspetto un input da tastiera per proseguire
+    fflush(stdin);  
     getch();
 }
