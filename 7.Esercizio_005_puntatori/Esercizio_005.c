@@ -1,6 +1,6 @@
 /*
 Autore: Gabriele bagnis
-Data: 22/10/2019
+Data: 30/10/2019
 Es 5 puntatori: Scrivi un programma in modo da memorizzare dei contatti in un ordine deciso dall'utente utilizzando una struttura autoreferenziata
 */
 
@@ -33,7 +33,7 @@ int main(){
     io.next= &giovanni; //per farlo metto il contatto giovanni subito dopo il contatto io nella serie
 
     mamma.next= &io;    //e poi metto il contatto io subito dopo il contatto mamma
-    
+    giovanni.next= &mamma;
     Contact* support= &mamma;   //ora creo il puntatore al contatto support per riuscire a stampare i contatti in modo ciclico senza dover stamparli uno a uno
 
     printf("name: %s \t number: %d\n", support->name, support->number); //stampo il primo contatto
