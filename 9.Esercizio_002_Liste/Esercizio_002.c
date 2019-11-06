@@ -1,7 +1,7 @@
 /*
 Autore: Gabriele bagnis
 Data: 30/10/2019
-Es 5 puntatori: crea una lista e la stampa
+Es 2 liste: Scrivere una funzione stampaLista basata sulla ricorsione, che ricevuta una Lista di elementi, la stampi a video in questo ordine: 1 -> 2 -> 3 -> 4 -> // 
 */
 
 #include <stdio.h>
@@ -12,10 +12,12 @@ struct El{
     struct El* next;
 };
 
+void stampaLista(struct El* l); //dichiaro la funzione per stampare la lista
+
 int main(){
     int n;
-    struct El* lista;
-    struct El* l;
+    struct El* lista;   //puntatore al primo elemento
+    struct El* l;       //serve per scorrere la lista
     lista=NULL; //assegno il valore NULL al puntatore per indicare che non punta nulla
 
     do{
@@ -38,12 +40,17 @@ int main(){
 
     l=lista; //porto l all'inizio della lista
     printf("numeri inseriti: \n");
-    while (l!=NULL){    //ripeto finchè esiste un elemento successivo
-        printf("%d - %p \n",l->valore, l->next);    //stampo il valore dell'elemento della lista e l'indirizzo del successivo
-        l=l->next; //passo all'elemento successivo della lista
-    }
-    printf("\n");
+    stampaLista(lista);
     fflush(stdin);
     getch();
     return 0;
  }
+
+void stampaLista(struct El* l){  //inserire l'inizio della lista
+    if(l!=NULL){    //ripeto finchè esiste un elemento successivo
+        printf("%d \n",l->valore);    //stampo il valore dell'elemento della lista e l'indirizzo del successivo
+        l=l->next; //passo all'elemento successivo della lista
+        stampaLista(l); //passo all'elemento successivo
+    }
+    return;
+}
