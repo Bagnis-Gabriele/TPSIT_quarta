@@ -1,7 +1,7 @@
 /*
 Autore: Gabriele bagnis
 Data: 12/11/2019
-Es 3 liste: Definire una funzione deallocaLista che riceve una ListaDiElementi e ne dealloca tutti gli elementi. 
+Es 4 liste: Definire una funzione deallocaLista che riceve una ListaDiElementi e ne dealloca tutti gli elementi. 
 */
 
 #include <stdio.h>
