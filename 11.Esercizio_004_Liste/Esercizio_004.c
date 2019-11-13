@@ -1,7 +1,7 @@
 /*
 Autore: Gabriele bagnis
-Data: 30/10/2019
-Es 3 liste: Definire una funzione (in due versioni, una iterativa e una ricorsiva) lunghezzaLista che data una ListaDiElementi, restituisca la sua lunghezza.
+Data: 12/11/2019
+Es 3 liste: Definire una funzione deallocaLista che riceve una ListaDiElementi e ne dealloca tutti gli elementi. 
 */
 
 #include <stdio.h>
