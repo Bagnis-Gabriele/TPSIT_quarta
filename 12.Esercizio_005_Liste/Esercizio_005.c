@@ -1,6 +1,6 @@
 /*
 Autore: Gabriele bagnis
-Data: 12/11/2019
+Data: 13/11/2019
 Es 5 liste: Definire una funzione ordinaLista che modifica una ListaDiElementi data ordinandola in modo crescente. 
 Lafunzione non deve usare allocazione dinamica della memoria (malloc e free), né modificare il campo info
 degli elementi. La funzione restituisce il puntatore al primo elemento ottenuto dopo l’ordinamento.
