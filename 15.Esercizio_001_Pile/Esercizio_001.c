@@ -1,6 +1,6 @@
 /*
 Autore: Gabriele bagnis
-Data: 19/11/2019
+Data: 21/11/2019
 Es 1 Pile: Creare un programma che dato un numero intero, avente un numero arbitrario di cifre inserite
 dall’utente, lo scriva in output con le cifre in ordine inverso. Utilizzare una pila e le implementazioni
 dei metodi push e pop
