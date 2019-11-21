@@ -117,8 +117,8 @@ struct El* UnisciListeOrdinanodole(struct El* l1, struct El* l2) { //inserire l'
     struct El* lista=NULL;   //puntatore all'inizio della lista
     struct El* l=NULL;   //puntatore per spostarsi nella lista
     int x;  //creo una variabile di appoggio
-    while(l1!=NULL||l2!=NULL) {
-        if (lista==NULL){ //se il punttore lista punta al nulla
+    while(l1!=NULL||l2!=NULL) {     //copio le due liste nella mia nuova lista unendole
+        if (lista==NULL){ 
             lista = (struct El*) malloc(sizeof(struct El));
             l = lista;
         } else {
@@ -135,6 +135,6 @@ struct El* UnisciListeOrdinanodole(struct El* l1, struct El* l2) { //inserire l'
         l->next=NULL;
     }
     printf("fine");
-    ordinaLista(lista);
+    ordinaLista(lista); //riordino la mia nuova lista
     return lista;
 }
