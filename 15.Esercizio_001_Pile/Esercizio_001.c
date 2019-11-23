@@ -27,7 +27,7 @@ int main(){
     char cifra[1000];
     printf("\nCaricamento della pila:");
     do{
-        printf("\nInserire la cifra:  ");      //richiedo la cifra
+        printf("\nInserire il numero:  ");      //richiedo il numero
         fflush(stdin);
         scanf("%s", cifra);
     }while(!controlloStringa(cifra));   //continuo a richiederla finchè non sarà composta solo da cifre

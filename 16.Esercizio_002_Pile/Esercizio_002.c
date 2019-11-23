@@ -16,27 +16,45 @@ struct El{
 
 struct El* pop(struct El** head);
 void push(struct El** head, struct El* element);
-bool controlloParentesi(struct El** head);
+void stampaLista(struct El* l);
 
 int main(){
-    struct El* head;
+    struct El* head=NULL;
     struct El* element;
+    struct El* item;
     char stringa[1000];
     printf("\nInserire la stringa:  ");
     fflush(stdin);
     scanf("%s", stringa);
     int i=0;
     do{
-        element = (struct El*) malloc(sizeof(struct El));
-        element->valore=stringa[i];
+        if(stringa[i]=='('||stringa[i]==')'||stringa[i]=='['||stringa[i]==']'||stringa[i]=='{'||stringa[i]=='}'){
+            element = (struct El*) malloc(sizeof(struct El));
+            element->valore=stringa[i];
+            if(head==NULL){
+                push(&head,element);
+            }else
+            { 
+                if(head->valore=='('&&element->valore==')'){
+                    item=pop(&head);
+                    free(item);
+                }else if(head->valore=='['&&element->valore==']'){
+                    item=pop(&head);
+                    free(item);
+                }else if(head->valore=='{'&&element->valore=='}'){
+                    item=pop(&head);
+                    free(item);
+                }else{
+                    push(&head,element);
+                }
+            }
+        }
         i++;
-        push(&head,element);
     }while(stringa[i]!='\0');
     printf("\nfine caricamento \n");
-    if(controlloParentesi(&head)){
+    stampaLista(head);
+    if(head==NULL){
         printf("le parentesi sono giuste");
-    }else{
-        printf("le parentesi sono errate");
     }
     printf("\n\npremere un tasto per continuare...");
     fflush(stdin);
@@ -64,39 +82,12 @@ struct El* pop(struct El** head){
 	return ret;
 }
 
-bool controlloParentesi(struct El** head){
-    struct El *ret;
-    char c;
-    int t,q,g; //tonde, quadre, graffe
-    t=0;
-    q=0;
-    g=0;
-    ret=pop(head);
-    while(ret!=NULL){
-        c=ret->valore;
-        if(c=='('){
-            t++;
-        }
-        if(c=='['){
-            q++;
-        }
-        if(c=='{'){
-            g++;
-        }
-        if(c==')'){
-            t--;
-        }
-        if(c==']'){
-            q--;
-        }
-        if(c=='}'){
-            g--;
-        }
-        free(ret);
-        ret=pop(head);
+void stampaLista(struct El* l){  //inserire l'inizio della lista
+    if(l!=NULL){    //ripeto finchè esiste un elemento successivo
+        printf("%c \n",l->valore);    //stampo il valore dell'elemento della lista e l'indirizzo del successivo
+        l=l->next; //passo all'elemento successivo della lista
+        stampaLista(l); //passo all'elemento successivo
     }
-    if(t==0&&q==0&&g==0){
-        return true;
-    }
-    return false;
+    return;
 }
+
