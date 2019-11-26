@@ -64,8 +64,8 @@ int main(){
 
 void push(struct El** head, struct El* element){
 	if (&head==NULL){
+        element->next = NULL;
 		*head = element;
-		element->next = NULL;
 	}else{
 		element->next = *head;
 		*head = element;
@@ -73,7 +73,7 @@ void push(struct El** head, struct El* element){
 }
 
 struct El* pop(struct El** head){
-	struct El *ret = *head;
+	struct El* ret = *head;
 	if(&head==NULL){
 		return NULL;
 	}else{
