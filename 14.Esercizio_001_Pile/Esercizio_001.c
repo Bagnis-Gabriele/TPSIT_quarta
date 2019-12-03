@@ -52,7 +52,7 @@ int main(){
  }
 
 void push(struct El** head, struct El* element){    //aggiungo l'elemento
-	if (&head==NULL){
+	if (*head==NULL){
 		*head = element;
 		element->next = NULL;
 	}else{
@@ -63,7 +63,7 @@ void push(struct El** head, struct El* element){    //aggiungo l'elemento
 
 struct El* pop(struct El** head){   //tolgo e leggo l'elemento
 	struct El *ret = *head;
-	if(&head==NULL){
+	if(*head==NULL){
 		return NULL;
 	}else{
 		*head = ret->next;
