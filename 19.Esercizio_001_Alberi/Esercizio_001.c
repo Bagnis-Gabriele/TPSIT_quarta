@@ -87,7 +87,7 @@ struct node *newNode(int data)
     return (node);
 }
 
-// mainnn
+// main
 
 int main(int argc, char const *argv[])
 {
