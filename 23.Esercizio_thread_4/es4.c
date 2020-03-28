@@ -33,11 +33,12 @@
 #include <time.h>
 
 int biglietti;
-pthread_mutex_t cassa;
+pthread_mutex_t cassa = PTHREAD_MUTEX_INITIALIZER;
 
 void compraBiglietto(void *arg){
-    int numero = rand() % 9 + 1;
+    int numero=*((int*) arg);
     int acquistati = 0;
+
     // SEZIONE CRITICA
     pthread_mutex_lock(&cassa); // blocco mutex cassa -> Rosso
     printf("sono il cliente %u e vorrei acquistare %d biglietti\n", pthread_self() , numero);
@@ -51,6 +52,8 @@ void compraBiglietto(void *arg){
     printf("\tbiglietti acquistati: %d\n\tbiglietti disponibili: %d\n", acquistati, biglietti);
 	// FINE SEZIONE CRITICA
     pthread_mutex_unlock(&cassa); // sblocco mutex cassa -> Verde
+
+    pthread_exit(0);
 }
 
 int main(int argc, char **argv){
@@ -58,19 +61,17 @@ int main(int argc, char **argv){
     biglietti=100;
     int n_clienti=100;
     pthread_t clienti[n_clienti];
-    pthread_mutex_unlock(&cassa); // sblocco cassa -> Verde
     int i;
 
     for(i=0; i<n_clienti; i++){
-        if(biglietti>0){
-            pthread_create(&clienti[i], NULL, (void*) &compraBiglietto, NULL);
-        }else{
-            n_clienti=i-1;
-        }
+        int* numero = (int*) malloc(sizeof(int));
+        *numero= rand() % 9 + 1;
+        pthread_create(&clienti[i], NULL, (void*) &compraBiglietto, (void *) numero);
     }
 
     for(i=0; i<n_clienti; i++){
         pthread_join(clienti[i], NULL); // ATTENDO TERMINAZIONE THREAD E LEGGO VALORE RESTITUITO (tipo void)
     }
+
     printf("Avanzano %d biglietti\n", biglietti);
 }
