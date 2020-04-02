@@ -36,7 +36,7 @@ int biglietti;
 pthread_mutex_t cassa = PTHREAD_MUTEX_INITIALIZER;
 
 void compraBiglietto(void *arg){
-    int numero=*((int*) arg);
+    int numero= rand() % 9 + 1;
     int acquistati = 0;
 
     // SEZIONE CRITICA
@@ -64,9 +64,7 @@ int main(int argc, char **argv){
     int i;
 
     for(i=0; i<n_clienti; i++){
-        int* numero = (int*) malloc(sizeof(int));
-        *numero= rand() % 9 + 1;
-        pthread_create(&clienti[i], NULL, (void*) &compraBiglietto, (void *) numero);
+        pthread_create(&clienti[i], NULL, (void*) &compraBiglietto, NULL);
     }
 
     for(i=0; i<n_clienti; i++){
