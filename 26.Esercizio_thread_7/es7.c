@@ -35,9 +35,11 @@ sem_t S[N];
 int fil[N] = {0, 1, 2, 3, 4};
 
 void *filosofo(void *num){
+            int *i = num;
     while(1) {
-        int *i = num;
-        sleep(1);
+        printf ("\nil filosofo %d pensa", *i);
+        sleep(rand()%10);
+        printf ("\nil filosofo %d ha pensato", *i);
 
         //PRENDI FORCHETTE
         if (*i == 4) {
@@ -47,7 +49,8 @@ void *filosofo(void *num){
         sem_wait(&S[*i]);      // sinistra
         sem_wait(&S[(*i+1)%5]); // destra
         }
-
+        printf ("\nil filosofo %d mangia", *i);
+        sleep(rand()%10);
         printf ("\nil filosofo %d ha mangiato", *i);
 
         //POSA FORCHETTE
@@ -57,6 +60,7 @@ void *filosofo(void *num){
 }
 
 int main(int argc, char **argv){
+    srand(time(NULL));
     int i;
     pthread_t t[N];
     
